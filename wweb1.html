@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Code Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            margin-top: 20px;
+        }
+        textarea {
+            width: 45%;
+            height: 400px;
+            margin: 10px;
+            padding: 10px;
+            font-family: monospace;
+        }
+        #output {
+            width: 45%;
+            height: 400px;
+            margin: 10px;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Run Code Files</h1>
+    </header>
+    <main>
+        <textarea id="htmlCode" placeholder="Write HTML code here..."></textarea>
+        <textarea id="cssCode" placeholder="Write CSS code here..."></textarea>
+        <textarea id="jsCode" placeholder="Write JavaScript code here..."></textarea>
+        <iframe id="output">placeholder="Uotput from file"></textarea></iframe>
+    </main>
+    <button onclick="runCode()">Run Code</button>
+    <script>
+        function runCode() {
+            const htmlCode = document.getElementById('htmlCode').value;
+            const cssCode = document.getElementById('cssCode').value;
+            const jsCode = document.getElementById('jsCode').value;
+
+            const output = document.getElementById('output');
+            output.contentDocument.body.innerHTML = htmlCode + '<style>' + cssCode + '</style>';
+            output.contentWindow.eval(jsCode);
+        }
+    </script>
+</body>
+</html>
